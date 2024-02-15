@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="styles.css">
         <style>
-            table, th, td {
-                border: 1px solid black;
-                border-collapse: collapse;
-                text-align: left;
-                font-weight: normal;
-            }
             img {
                 width: 600px;
                 height: 600px;
             }
         </style>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function(){
+                $("a").mouseenter(function(){
+                    $(this).css("color", "gray");
+                })
+                $("a").mouseleave(function(){
+                    $(this).css("color", "white");
+                })
+            });
+        </script>
+
     </head>
     <body>
         <h1>Countries</h1>
         <h2>Middle East</h2>
-        <table>
-            <tr>
-                <td>
-                    <a href="Middle East\Iran\iran.html" target="_blank">Iran</a>
-                </td>
-                <td>
-                    <img src="images\World-Data-Locator-Map-Iran.webp"/>
-                </td>
-            </tr>
+        <hr>
+            <h3><a href="Middle East\Iran\iran.html" target="_blank">Iran</a></h3>
+            <img src="images\World-Data-Locator-Map-Iran.webp"/>
+            <hr>
 
-            <tr>
-                <td>
-                    <a href="Middle East\Israel\israel.html" target="_blank">Israel</a>
-                </td>
-                <td>
-                    <img src="images\World-Data-Locator-Map-Israel.webp"/>
-                </td>
-            </tr>
+            <h3><a href="Middle East\Israel\israel.html" target="_blank">Israel</a></h3>
+            <img src="images\World-Data-Locator-Map-Israel.webp"/>
+            
+
+           
 
 
         </table>

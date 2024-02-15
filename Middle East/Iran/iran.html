@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="icon" type="image/x-icon" href="..\..\images\Flag-Iran.webp">
+    <link rel="apple-touch-icon" href="..\..images\Flag-Iran.webp">
     <style>
+        
         path {
             fill: rgb(224, 101, 101); 
             stroke: rgb(247, 247, 247); 
@@ -16,19 +20,11 @@
             position: fixed;
             top: 0;
             left: 180px;
-            border: 1px solid #000;
+            border: 1px solid rgb(247, 247, 247);
             padding: 10px;
-            background-color: #fff;
+            background-color: rgb(224, 101, 101);
         }
-        div {
-            padding: 20px;
-        }
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            text-align: left;
-            font-weight: normal;
-        }
+        
     </style>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -46,12 +42,21 @@
             $("path").mouseleave(function(){
                 $("#textbox").hide();
             });
+
+
+            $("a").mouseenter(function(){
+                $(this).css("color", "gray");
+            })
+            $("a").mouseleave(function(){
+                $(this).css("color", "white");
+            })
+
         });
     </script>
 </head>
 <body>
     <div><h1>Iran</h1></div>
-    <div><img src="https://cdn.britannica.com/22/1722-004-EAD033D8/Flag-Iran.jpg"/></div>
+    <div><img src="..\..\images\Flag-Iran.webp"/></div>
     <div>
         <h2>Table of contents</h2>
         <ul>

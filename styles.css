@@ -1,0 +1,19 @@
+body{
+    background-color: #282A36;
+    color: white;
+    font-family: 'Segoe UI';
+}
+table, th, td {
+    border: 1px solid #fff;
+    border-collapse: collapse;
+    text-align: left;
+    font-weight: normal;
+}
+a {
+    color: white;  
+    text-decoration:none;
+}
+
+div {
+    padding: 20px;
+}
