@@ -7,7 +7,7 @@ table, th, td {
     border: 1px solid #fff;
     border-collapse: collapse;
     text-align: left;
-    font-weight: normal;
+    /*   */
 }
 a {
     color: white;  
