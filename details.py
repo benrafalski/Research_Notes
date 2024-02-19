@@ -55,25 +55,19 @@ filenames = [
 ]
 
 
+def make_html_history_file(filename, country):
 
-
-
-
-
-dets = "hihi"
-
-filecontents = f"""
-<!DOCTYPE html>
+    filecontents = f"""<!DOCTYPE html>
 <html>
 <head>
-    <title>{dets}</title>
-    <link rel="icon" type="image/x-icon" href="../../../images/Flag-Israel.webp">
-    <link rel="apple-touch-icon" href="../../../images/Flag-Israel.webp">
+    <title>{filename}</title>
+    <link rel="icon" type="image/x-icon" href="../../../images/Flag-{country}.webp">
+    <link rel="apple-touch-icon" href="../../../images/Flag-{country}.webp">
     <link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body>
-    <h2>{dets}</h2>
+    <h2>{filename}</h2>
     <ul>
         <li></li>
     </ul>
@@ -89,9 +83,12 @@ filecontents = f"""
 
 </body>
 </html>
-"""
+    """
 
-filename = "file.html"
-f = open(filename, "w")
-f.write(filecontents)
-f.close()
+    f = open(f"{filename.replace(' ', '')}.html", "w")
+    f.write(filecontents)
+    f.close()
+
+
+
+make_html_history_file("Making a file", "Iran")
