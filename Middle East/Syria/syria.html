@@ -38,6 +38,136 @@
             padding: 10px;
             background-color: rgb(224, 101, 101);
         }
+
+        /* The actual timeline (the vertical ruler) */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: #282A36;
+        }
+
+        /* The actual timeline (the vertical ruler) */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: white;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        /* Container around content */
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        /* The circles on the timeline */
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid rgb(84, 73, 202);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .container:hover::after {
+            background-color: rgb(84, 73, 202);
+        }
+
+        /* Place the container to the left */
+        .left {
+            left: 0;
+        }
+
+        /* Place the container to the right */
+        .right {
+            left: 50%;
+        }
+
+        /* Add arrows to the left container (pointing right) */
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid white;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+
+        /* Add arrows to the right container (pointing left) */
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid white;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+
+        /* Fix the circle for containers on the right side */
+        .right::after {
+            left: -16px;
+        }
+
+        /* The actual content */
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+        }
+
+        /* Media queries - Responsive timeline on screens less than 600px wide */
+        @media screen and (max-width: 600px) {
+        /* Place the timelime to the left */
+            .timeline::after {
+                left: 31px;
+            }
+
+            /* Full-width containers */
+            .container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            /* Make sure that all arrows are pointing leftwards */
+            .container::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+
+            /* Make sure all circles are at the same spot */
+            .left::after, .right::after {
+                left: 15px;
+            }
+
+            /* Make all right containers behave like the left ones */
+            .right {
+                left: 0%;
+            }
+        }
+        
         
     </style>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
@@ -70,6 +200,11 @@
             $("circle").mouseleave(function(){
                 $("#textbox").hide();
             });
+
+            $(".container").click(function(){
+                
+                window.open(`History/${$(this).attr("id")}.html`);
+            })
 
         });
     </script>
@@ -113,9 +248,17 @@
             <path d="m 15.784487,483.09134 2.2,1.28 0.13,0.39 -1.04,1.64 3.35,3.36 4.08,0.49 0.39,0.95 -0.25,4.6 0,0 -0.99,5.31 0.2,0.59 2.35,1.7 0.36,1.23 -2.8,5.54 -0.68,6.36 2.28,4.42 1.56,1.92 0.35,2.31 -0.52,0.75 -1.56,-1.89 -3.29,0.36 -0.17,0.88 0.91,1.76 0.11,2.96 -2.87,2.74 0,0 0.82,-2.55 -2.05,-3.2 -0.85,-7.8 -0.51,-1.67 0.29,-3.69 -0.5,-2.06 0.65,-0.95 1.97,0.53 1.64,-0.45 0.02,-0.79 -1.34,-1.91 1.77,-1.89 0.23,-3.07 -2.08,-3.01 -2.92,-0.79 -0.2,-1.27 1.2,-1.59 0.57,-1.89 -0.79,-3.77 -3.16,-3.58 1.14,-1.94 z" title="Al Qunayţirah" id="SY-QU"/>
             <path d="m 65.904487,589.24134 -4.24,-4.33 -12.93,-9.98 -2.69,1.17 -4.4,-0.65 -2.29,0.1 -1.96,0.6 -0.63,-3.64 -1.38,-3.11 -3.51,-3.65 0.43,-4.13 -0.29,-1.38 -1.63,-0.89 -2.58,0.06 -2,-1.13 0.94,-1.27 -0.02,-1.01 -0.8,-0.73 -1.17,-0.02 -1.1,-0.74 -0.64,-1.67 -0.82,-0.75 -1.62,0.24 -1.89,-0.32 -2.26,-1.27 -1.63,0 -2.65,0.78 -1.46,-0.66 -0.32,-0.57 -0.93,0.13 -0.31,-0.5 0.41,-1.23 3.09,-3.58 2.42,-4.34 1.6,-1.72 3.24,-6.31 0,0 2.87,-2.74 -0.11,-2.96 -0.91,-1.76 0.17,-0.88 3.29,-0.36 1.56,1.89 0.52,-0.75 -0.35,-2.31 -1.56,-1.92 -2.28,-4.42 0.68,-6.36 2.8,-5.54 -0.36,-1.23 -2.35,-1.7 -0.2,-0.59 0.99,-5.31 0,0 2.53,0.98 1.01,1.95 2.63,0.3 1.65,-0.49 2.69,-2.19 1.7,-0.72 5.46,0.46 3.48,-1.6 3.02,-0.49 0.57,-0.49 1.37,-3.2 -0.55,-2.67 0.17,-1.14 1.26,-0.85 1.87,2.44 1.94,1.31 0.63,2.32 3.07,0.72 0.99,1.69 2.01,1.76 3.53,0.82 1.02,-0.62 0.63,-2.64 1.92,-1.86 6.06,-3.92 1.78,-1.99 1.51,-0.65 0.85,0.75 1.29,3.26 3.43,3.89 0.63,3.98 0,0 0,0 0,0 -1.29,1.14 -0.9,0.19 -3.82,-0.58 -2.77,2.12 -1.15,2.38 0.47,1.69 -0.31,2.12 1.38,3.72 0.27,3.19 0.93,0.65 2.03,-0.65 1.27,0.26 0.41,3.58 1.12,2.64 -1.29,0.32 -6.06,-0.42 -3.24,0.23 -2.35,0.88 -4.06,3.45 -2.99,1.85 -0.33,1.24 0.6,1.79 -1.1,2.92 0.91,4.42 1.84,3.51 -1.1,2.41 0.49,4.28 1.13,3.44 -0.17,0.65 -0.96,0.39 -0.24,0.59 0.19,3.3 0.82,0.78 3.32,0.94 3.89,0.43 1.18,1.52 -0.41,2.24 -2.52,2.04 -2.3,0.94 -0.11,0.65 1.01,1.91 -0.85,2.85 1.04,0.55 1.76,0.16 3.34,-0.29 1.54,1.43 1.89,-0.23 1.07,0.81 0.28,0.78 -0.03,0.94 -1.21,1.49 -0.27,1.06 2.99,3.63 0.35,0.97 -1.07,5.89 0.52,4.01 -0.81,4.81 0,0 -1,-0.28 -2.28,-1.66 -6.96,-1.03 z" title="Darٰā" id="SY-DR"/>
             <path d="m 84.794487,496.91134 0.27,0.32 0.94,-0.42 15.490003,-1.83 6.28,-1.83 1.84,0.2 3.24,3 3.15,1.7 1.26,1.4 0.83,2.94 4.11,4.27 0.63,3.38 1.37,1.6 1.65,0.78 5.92,0.59 3.07,1.27 2.64,1.95 0.16,2.48 2.42,3.22 0.46,1.4 2.66,1.11 2.28,1.52 1.45,0.23 2.53,-1.75 2.46,1.04 2.09,2.76 0.77,6.76 0.96,1.73 8.66,8.44 2.86,2.27 2.33,3.02 3.56,2.11 3.52,4.21 0,0 -53.81,34.17 -6.6,4.96 -4.3,4.15 -2.02,0.21 -8.58,-2.52 -2.490003,0.83 -2.09,-1.62 -2.14,-0.37 -15.5,-1.67 0,0 0.81,-4.81 -0.52,-4.01 1.07,-5.89 -0.35,-0.97 -2.99,-3.63 0.27,-1.06 1.21,-1.49 0.03,-0.94 -0.28,-0.78 -1.07,-0.81 -1.89,0.23 -1.54,-1.43 -3.34,0.29 -1.76,-0.16 -1.04,-0.55 0.85,-2.85 -1.01,-1.91 0.11,-0.65 2.3,-0.94 2.52,-2.04 0.41,-2.24 -1.18,-1.52 -3.89,-0.43 -3.32,-0.94 -0.82,-0.78 -0.19,-3.3 0.24,-0.59 0.96,-0.39 0.17,-0.65 -1.13,-3.44 -0.49,-4.28 1.1,-2.41 -1.84,-3.51 -0.91,-4.42 1.1,-2.92 -0.6,-1.79 0.33,-1.24 2.99,-1.85 4.06,-3.45 2.35,-0.88 3.24,-0.23 6.06,0.42 1.29,-0.32 -1.12,-2.64 -0.41,-3.58 -1.27,-0.26 -2.03,0.65 -0.93,-0.65 -0.27,-3.19 -1.38,-3.72 0.31,-2.12 -0.47,-1.69 1.15,-2.38 2.77,-2.12 3.82,0.58 0.9,-0.19 z" title="As Suwaydā'" id="SY-SU"/>
+            <!-- https://www.britannica.com/place/Al-Hasakah -->
+            <!-- https://www.britannica.com/place/Al-Jazirah-region-Middle-East -->
             <!-- https://www.britannica.com/place/Damascus -->
-            <!-- https://www.britannica.com/place/Tartus -->
+            <!-- https://www.britannica.com/place/Dara -->
+            <!-- https://www.britannica.com/place/Hamah -->
+            <!-- https://www.britannica.com/place/Hawran -->
+            <!-- https://www.britannica.com/place/Homs -->
             <!-- https://www.britannica.com/place/Latakia-Syria -->
+            <!-- https://www.britannica.com/place/Tartus -->
+            
+            
         
         
         </svg>
@@ -132,8 +275,8 @@
                 <td><b>Borders</b></td>
                 <td>
                     <ul>
-                        <li><u>Neighboring Countries:</u>Turkey, Iraq, Jordan, Lebanon, and Israel. <sup>[2]</sup></li>
-                        <li><u>Water:</u> Mediterranean Sea<sup>[2]</sup></li>
+                        <li><u>Neighboring Countries:</u> Turkey, Iraq, Jordan, Lebanon, and Israel. <sup>[2]</sup></li>
+                        <li><u>Water:</u> Mediterranean Sea. <sup>[2]</sup></li>
                     </ul>
                 </td>
             </tr>
@@ -143,16 +286,23 @@
                     <ul>
                         <li><u>Elevation:</u> <sup>[2]</sup></li>
                         <li><u>Al-Ansariyyah Mountains:</u> Mountains just off the coast of the Mediterranean. Run north to south and has a highest point of 5,125 feet. <sup>[2]</sup></li>
-                        <li><u>Anti-Lebanon Mountains:</u> Sparsely populated and run along the border of Syria-Lebanon. Contains Syria's highest peak at 9,232ft called Mount Hermon. Part of Mount Hermon is in the Golan Heights and Israel has developed these slopes for recreation such as skiiing. <sup>[2, 3, 4]</sup></li>
-                        <li><u>Mount al-Duruz:</u> Mount of the Druze, located in southern Syria. Is 5,900ft high.  <sup>[2, 5]</sup></li>
-                        <li><u>Syrian Desert:</u> Runs from southern Syria into northern Saudi Arabia and from the Jordan river to the middle of Iraq. Arid rock-desert wasteland about 1,000ft above sea level that gets less than 5in of water a year. Has some oil exploration. <sup>[2, 6]</sup></li>
+                        <li><u>Anti-Lebanon Mountains:</u> Sparsely populated and run along the border of Syria-Lebanon. Contains Syria's highest peak at 9,232ft called Mount Hermon. Part of Mount Hermon is in the Golan Heights and Israel has developed these slopes for recreation such as skiiing. <sup>[2,3,4]</sup></li>
+                        <li><u>Mount al-Duruz:</u> Mount of the Druze, located in southern Syria. Is 5,900ft high.  <sup>[2,5]</sup></li>
+                        <li><u>Syrian Desert:</u> Runs from southern Syria into northern Saudi Arabia and from the Jordan river to the middle of Iraq. Arid rock-desert wasteland about 1,000ft above sea level that gets less than 5in of water a year. Has some oil exploration. <sup>[2,6]</sup></li>
                     </ul>
                 </td>
             </tr>
             <tr>
                 <td><b>Drainage</b></td>
                 <td>
-                    <ul>    
+                    <ul> 
+                        <li><u>Euphrates River:</u> Main water source and only navigable river. 1,740 miles long. Runs from Turkey, through the middle of Syria, and through Iraq near to the Persian Gulf. Euphrates dam is in al-Raqqah and was completed in 1973 and also has a power plant. <sup>[7,8,9]</sup></li>
+                        <li><u>Lake Al-Asad:</u> Revervoir behind the Euphrates dam on the border of Halab and al-Raqqah. Began to fill in 1973. <sup>[7]</sup></li>
+                        <li><u>Orontes River:</u> Flows west of the Anti-Lebanon mountains over the northern Lebanon border, running east of the Al-Ansariyyah mountains and into Turkey where it drains into the Mediterranean. Main river in the mountains. <sup>[7,10]</sup></li>
+                        <li><u>Lake Qattineh:</u> Dam on the Orontes forms the lake locted in Hims near the Lebanon border. <sup>[10]</sup></li>
+                        <li><u>Yarmuk River:</u> Stems from the northern tip of the Jordan river and forms the boundary between Jordan and Syria along the Golan Heights. About 20 miles long. <sup>[7,11]</sup></li>
+                        <li><u>Al-Jabbul Lake:</u> Smaller lake southeast of Aleppo. <sup>[7]</sup></li>
+                        <li><u>Smaller lakes:</u> Jayrud northeast of Damascus, Khatuniyyah northeast of al-Hasakah, Muzayrib in Dara, and Qattinah in Homs. <sup>[7]</sup></li>
                     </ul>
                 </td>
             </tr>
@@ -160,6 +310,7 @@
                 <td><b>Climate</b></td>
                 <td>
                     <ul>
+                        <li><u></u> <sup>[7]</sup></li>
                     </ul>
                 </td>
             </tr>
@@ -395,12 +546,26 @@
     <div>
         <h2 id="History">History</h2>
         <h3 id="Early History">Early History</h3>
-        <table>
+        <!-- <table>
             <tr>
                 <th>Dates</th>
                 <th>Events</th>
             </tr>
-        </table>
+        </table> -->
+        <div class="timeline">
+            <div class="container left" id="2017">
+              <div class="content">
+                <h2>2017</h2>
+                <p>Lorem ipsum..</p>
+              </div>
+            </div>
+            <div class="container right" id="2016">
+              <div class="content">
+                <h2>2016</h2>
+                <p>Lorem ipsum..</p>
+              </div>
+            </div>
+        </div>
 
     <div>
         <h2 id="Current Events">Current Events</h2>
@@ -415,7 +580,11 @@
             [4] https://www.britannica.com/place/Anti-Lebanon-Mountains <br>
             [5] https://www.britannica.com/place/Mount-al-Duruz <br>
             [6] https://www.britannica.com/place/Syrian-Desert <br>
-            [7]
+            [7] https://www.britannica.com/place/Syria#ref29934 <br>
+            [8] https://www.britannica.com/place/Euphrates-River <br>
+            [9] https://www.britannica.com/topic/Euphrates-Dam <br>
+            [10] https://www.britannica.com/place/Orontes-River <br>
+            [11] https://www.britannica.com/place/Yarmuk-River <br>
         </p>
 
     </div>
