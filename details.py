@@ -245,7 +245,16 @@ def make_html_history_file(filename, country):
 
 def make_list_items(filename):
     href = f"History/{filename.replace(' ', '')}.html"
-    print(f"<li><a href=\"{href}\" target=\"_blank\">{filename}</a></li>")
+    # print(f"<li><a href=\"{href}\" target=\"_blank\">{filename}</a></li>")
+    element = f"""<div class="container left">
+    <div class="content">
+        <h2><a href="{href}" target="_blank">{filename}</a></h2>
+        <p>Established after Abu Muslim overthrew the Umayyads.</p>
+    </div>
+    <div class="date" style="right: -80px;">750</div>
+</div> 
+"""
+    print(element)
 
 
 
