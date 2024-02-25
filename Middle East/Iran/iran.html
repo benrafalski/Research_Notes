@@ -77,6 +77,11 @@
             //     window.open(`History/${$(this).parent().attr("id")}.html`);
             // })
 
+            $("#EarlyHistory").click(function(){
+                // alert(1)
+                $("#EHtimeline").slideToggle("slow");
+            })
+
 
 
         });
@@ -237,6 +242,14 @@
     <div>
         <h2 id="People">People</h2>
         <table>
+            <tr>
+                <td>Population</td>
+                <td>
+                    <ul>
+                        <li>87,529,000 in 2024</li>
+                    </ul>
+                </td>
+            </tr>
             <tr>
                 <td><b>Ethnic Groups</b></td>
                 <td>
@@ -565,9 +578,9 @@
     </div>
     <div>
         <h2 id="History">History</h2>
-        <h3 id="Early History">Early History</h3>
+        <h3 id="EarlyHistory">Early History</h3>
 
-        <div class="timeline">
+        <div class="timeline" id="EHtimeline">
             <div class="container left">
               <div class="content">
                 <h2><a href="History/AdventofIslam.html" target="_blank">Advent of Islam</a></h2>
