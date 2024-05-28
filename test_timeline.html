@@ -5,7 +5,7 @@
 <head>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <style>
-        body{
+            body{
                 background-color:rgb(79, 195, 247);
                 overflow:hidden;
                 font-family: 'Montserrat', sans-serif;
@@ -36,6 +36,26 @@
                 background-color:rgb(79, 195, 247);
                 
             }
+
+
+            @media (hover: hover){
+                /* body{
+                    background-color: red;
+                } */
+
+            }
+
+            @media (hover: none){
+                /* body{
+                    background-color: brown;
+                } */
+
+                .inactive:hover{
+                    fill:#00EB5F/*rgb(0,200,0)*/;
+                }
+
+            }
+
             .inactive{
                 fill:#f2f2f2;
                 fill-rule:evenodd;
@@ -166,6 +186,7 @@
             let toolHeight = tooltip.offsetHeight;
             //alert(evt.pageX)
             if(evt.pageX <= window.innerWidth/2){
+                // tooltip.style.left = evt.clientX + 2 + "px";
                 tooltip.style.left = evt.pageX + 2 + "px";
             } else {
                 tooltip.style.left = evt.pageX - toolWidth - 2+ "px";
@@ -251,6 +272,15 @@
                     showTooltip(event, this.id);
                 }, false);
                 el[i].addEventListener("mouseout", function() {
+                    hideTooltip();
+                }, false);
+            }
+
+            for (var i = 0; i < el.length; i++) {
+                el[i].addEventListener("touchmove", function() {
+                    showTooltip(event, this.id);
+                }, false);
+                el[i].addEventListener("touchout", function() {
                     hideTooltip();
                 }, false);
             }
