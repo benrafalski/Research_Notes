@@ -191,16 +191,18 @@ a:hover {
     right: -31.5%;
 }
 
-
+#flag {
+    padding: 20px;
+}
 
 .map-path {
-    fill: rgb(224, 101, 101); 
-    stroke: rgb(247, 247, 247); 
+    fill: rgb(151, 144, 238); 
+    stroke: rgb(255, 255, 255); 
     stroke-width: 0.889282px;
 }
 .map-path:hover {
-    fill: rgb(239, 177, 177); 
-    stroke: rgb(247, 247, 247); 
+    fill: rgb(234, 232, 252); 
+    stroke: rgb(255, 255, 255); 
     stroke-width: 0.889282px;
 }
 
@@ -216,6 +218,27 @@ a:hover {
     stroke-width: 0.889282px;
 }
 
+.map-wrap {
+    width: 500px;
+    height: 300px;
+    border:1px solid black;
+    padding: 20px;
+    margin: 20px;
+    overflow:hidden;
+    /* position: absolute; */
+}
+.svg-scrollpane {
+    width:100%;
+    height:100%;
+    transition: transform .3s;
+}
+.map-path-selected {
+    /* background-color: #282A36; */
+    fill: #282A36;
+    stroke: rgb(247, 247, 247); 
+    stroke-width: 0.889282px;
+}
+
 #textbox {
     position: fixed;
     top: 0;
@@ -223,6 +246,16 @@ a:hover {
     border: 1px solid rgb(247, 247, 247);
     padding: 10px;
     background-color: rgb(224, 101, 101);
+}
+
+#tooltip {
+    background: #404777;
+    color:white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    text-align:center;
+    z-index: 10;
 }
 
 
