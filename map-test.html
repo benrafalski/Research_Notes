@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="Countries/styles.css">
+
+        <style>
+
+
+        </style>
+        <script>
+            $(document).ready(function(){
+                var scroll_zoom = new ScrollZoom($('#map-wrap'),4,0.5)
+                $("#textbox").hide();
+                $(".map-path").mouseenter(function(){
+                    var titleText = $(this).attr('title');
+                    $("#textbox").show();
+                    $("#textbox").text(`Province: ${titleText}`)
+                    $("#textbox").css("background-color", "rgb(224, 101, 101)");
+                    $(this).click(function(){
+                        window.open(`Provinces/${titleText}.html`);
+                    })
+                });
+                $(".map-path").mouseleave(function(){
+                    $("#textbox").hide();
+                });
+
+
+                
+            })
+
+
+        </script>
+
+    </head>
+    <body>
+        
+
+    </body>
+</html>
