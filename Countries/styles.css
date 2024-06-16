@@ -234,7 +234,8 @@ a:hover {
 }
 .map-path-selected {
     /* background-color: #282A36; */
-    fill: #282A36;
+    /* fill: #273160; */
+    fill: rgb(81, 77, 133);
     stroke: rgb(247, 247, 247); 
     stroke-width: 0.889282px;
 }
