@@ -538,3 +538,8 @@ a:hover {
     .cards-container section img {
     width: 100%;
     }
+
+.div-content {
+    margin: 10px;
+    /* padding: 10px; */
+}
