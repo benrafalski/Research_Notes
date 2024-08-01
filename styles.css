@@ -22,9 +22,9 @@ a:hover {
     color: rgb(84, 73, 202);
 }
 
-div {
+/* div {
     padding: 20px;
-}
+} */
 
 /* The actual timeline (the vertical ruler) */
 .timeline {
