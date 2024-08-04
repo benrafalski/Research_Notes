@@ -10,6 +10,7 @@ function ScrollZoom(container,max_scale,factor){
 
     function scrolled(e){
         var offset = container.offset()
+        console.log(offset)
         zoom_point.x = e.pageX - offset.left
         zoom_point.y = e.pageY - offset.top
 
@@ -20,6 +21,8 @@ function ScrollZoom(container,max_scale,factor){
         delta = e.originalEvent.detail;
         }
         delta = Math.max(-1,Math.min(1,delta)) // cap the delta to [-1,1] for cross browser consistency
+
+        console.log(delta)
 
         // determine the point on where the slide is zoomed in
         zoom_target.x = (zoom_point.x - pos.x)/scale
@@ -48,6 +51,7 @@ function ScrollZoom(container,max_scale,factor){
     }
 
     function update(){
+        console.log(pos)
         target.css('transform','translate('+(pos.x)+'px,'+(pos.y)+'px) scale('+scale+','+scale+')')
     }
 }
