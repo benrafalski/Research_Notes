@@ -564,7 +564,7 @@ a:hover {
   }
   
 .fa.active {
-    transform: rotateZ(-90deg);
+    transform: rotateZ(90deg);
 }
 
 .sidenav-dropdown-title > .fa {
