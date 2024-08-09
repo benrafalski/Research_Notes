@@ -18,4 +18,18 @@ $(document).ready(function(){
         $(this).find('i').toggleClass('active');
     })
 
+
+
+    $(".sidenav-dropdown-container.inactive").find('.sidenav-sublist').slideUp(5);
+    $(".sidenav-dropdown-container.inactive").find('i.fa.fa-chevron-down').toggleClass('active');
+    $(".sidenav-dropdown-title").click(function(){
+        var list = $(this).next()
+
+        console.log(list.attr('class'))
+        
+        if(list.attr('class') == 'sidenav-sublist'){
+            list.slideToggle()
+        }
+        $(this).find('i').toggleClass('active');
+    })
 });
