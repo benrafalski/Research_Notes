@@ -17,30 +17,6 @@
 
 
     <script>
-
-        // $(document).ready(function(){
-        //     var scroll_zoom = new ScrollZoom($('#map-wrap-main'),4,0.5)
-        //     var scroll_zoom_border = new ScrollZoom($('#map-wrap-borders'),4,0.5)
-
-        //     var el = document.querySelectorAll(".map-path");
-
-        //     for (var i = 0; i < el.length; i++) {
-        //         el[i].addEventListener("mousemove", function() {
-        //             showTooltip(event, this.id);
-        //         }, false);
-        //         el[i].addEventListener("mouseout", function() {
-        //             hideTooltip();
-        //         }, false);
-        //     }
-
-        //     let colorcode = {
-        //         'period1': '#fec541',
-        //         'period2': '#36d484',
-        //         'hafez-assad-period': '#32ccf4'
-        //     };
-        //     let timeline = new PRESTimeline($('#this-timeline'), colorcode);
-
-        // });
         $(document).ready(function(){
             $(".map-wrap").each(function(i, obj){
                 var scrollpane = new ScrollZoom($(`#${$(this).attr("id")}`), 4, 0.5)
@@ -255,16 +231,32 @@
                     <div class="list-content-container" id="eastern-china-relief">
                         <div class="list-content-title">
                             <i class="fa fa-chevron-right active"></i>
-                            <h4 class="list-content-heading">Eastern China
-                                <sup>
-                                    
-                                </sup>
-                            </h4>
+                            <h4 class="list-content-heading">Eastern China</h4>
                         </div>
                         <div class="list-content-body">
-                            
+                            <h5>Northeast Plain
+                                <sup>
+                                    <a href="https://www.britannica.com/place/Northeast-Plain" target="_blank">[1]</a>
+                                    <a href="https://www.britannica.com/place/China/The-eastern-region#ref70960" target="_blank">[2]</a>
+                                </sup>
+                            </h5> 
+                            <ul>
+                                <li>Also called Manchuria plain because it is located in former Manchuria</li>
+                                <li>Heart of the central lowland of northeast China, is China's major soybean-growing area and is an important base for heavy industry</li>
+                                <li>Bordered to by the Da Hinggan range (west and north) and the Xiao Hinggan range (east)</li>
+                                <li>Has northern half and southern half split by a lowland that is 500-850 ft in elevation</li>
+                                <li>Rivers: Sungari river, Nen river, Liao river</li>
+                                <li><img src="../../images/Locator-map-Northeast-Plain.webp" style="width: 500px;"/></li>
+                            </ul>                           
                         </div>
                     </div>
+
+                    <!-- 
+                    <sup>
+                        <a href="" target="_blank">[1]</a>
+                    </sup> 
+                    -->
+                    
 
                     <!-- SOUTHWEST CHINA RELIEF -->
                     <div class="list-content-container" id="southwest-china-relief">
