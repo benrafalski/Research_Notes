@@ -602,14 +602,14 @@ a:hover {
 
 .sidenav-dropdown-link {
     display: inline !important;
-    /* margin-left: -18px; */
     padding-left: 0px !important;
 }
 
 .sidenav a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 11px;
+    font-weight: 100;
     color: #bec1c4;
     display: block;
     
