@@ -30,6 +30,12 @@ a:hover {
     color: rgb(84, 73, 202);
 }
 
+hr.thick {
+   height: 2px; 
+   border: none; 
+   background-color: white;
+}
+
 
 /* The actual timeline (the vertical ruler) */
 .timeline {
