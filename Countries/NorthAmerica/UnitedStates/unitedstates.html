@@ -8,6 +8,7 @@
 
     
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script async src="https://www.youtube.com/iframe_api"></script>
     <script src="../../../timeline.js"></script>
     <script src="../../../scrollzoom.js"></script>
     <script src="../../../tooltip.js"></script>
@@ -53,7 +54,29 @@
             };
             let timeline = new PRESTimeline($('#this-timeline'), colorcode);
 
-        });
+            
+        }); 
+        function onYouTubeIframeAPIReady() {
+            var player;
+            player = new YT.Player('washington-plane-crash-video', {
+                videoId: 'mxMYeZmAxvo', // YouTube Video ID
+                width: 560, // Player width (in px)
+                height: 316, // Player height (in px)
+                playerVars: {
+                    autoplay: 0, // Auto-play the video on load
+                    controls: 1, // Show pause/play buttons in player
+                    mute: 1, // auto mute
+                    rel:0, // hide related videos
+                    showinfo: 0, // Hide the video title
+                    modestbranding: 1, // Hide the Youtube Logo
+                    loop: 1, // Run the video in a loop
+                    fs: 0, // Hide the full screen button
+                    cc_load_policy: 0, // Hide closed captions
+                    iv_load_policy: 3, // Hide the Video Annotations
+                    autohide: 0 // Hide video controls when playing
+                },
+            });
+        }
     </script>
 </head>
 <body>
@@ -1026,9 +1049,12 @@
                                             <a href="" target="_blank">[1]</a>
                                         </sup>
                                     </li>
-                                    <li><u>Secretary of the Interior</u>
+                                    <li><u>Secretary of the Interior Doug Burgum</u>:
+                                        Burgum was confirmed 79-18 in the Senate.
+                                        Burgum was previously a software executive and business-minded conservative before becoming the governor of North Dakota, he also ran against Trump in the Republican 2024 primary but dropped out and endorsed Trump.
+                                        During his hearing, Burgum said he would expand oil and gas drilling rights auctions and support permitting reforms to speed development of transmission lines and pipelines, a sharp turn from Biden's policies of limiting drilling on federal lands in favor of renewable sources.
                                         <sup>
-                                            <a href="" target="_blank">[1]</a>
+                                            <a href="https://www.reuters.com/world/us/senate-confirms-north-dakotas-burgum-trump-interior-secretary-2025-01-31/" target="_blank">[1]</a>
                                         </sup>
                                     </li>
                                     <li><u>Secretary of Agriculture</u>
@@ -1344,8 +1370,16 @@
                                                 <td>EO 14157</td>
                                                 <td>Securing Our Borders</td>
                                                 <td>
+                                                    Orders a "physical wall and other barriers" at the brder.
+                                                    Orders the detaining and deporting all aliens who are in violation of immigration law to the countries they originated from. 
+                                                    Terminates "catch-and-release," where aliens are released into the US before their court date.
+                                                    Terminates the "CBP One" application that was used by migrants entering the US.
+                                                    Directs Homeland Security to use DNA identification to verify familial relationships of migrants being detained and deported.
+                                                    Directs the Attorney General to prioritize prosecutions related to the border and human smuggling, human trafficking, child trafficking, and sex trafficking.
+
                                                     <sup>
-                                                        <a href="" target="_blank">[1]</a>
+                                                        <a href="https://en.wikisource.org/wiki/Executive_Order_14165" target="_blank">[1]</a>
+                                                        <a href="" target="_blank">[2]</a>
                                                     </sup>
                                                 </td>
                                             </tr>
@@ -1354,8 +1388,17 @@
                                                 <td>EO 14158</td>
                                                 <td>Restoring The Death Penalty And Protecting Public Safety</td>
                                                 <td>
+                                                    Directs the Attorney General to pursue the death penalty for all demanding crimes, Biden had previously issued a moratorium on Federal executions in 2021.
+                                                    Directs the Attorney General to pursue prosecution of the death penalty for murder of law-enforcement or a capital crime committed by an illegal alien in the US
+                                                    Directs the Attorney General to encourage state attorneys general to pursue the death penalty.
+                                                    Directs the Attorney General to imprison, the 37 people that Biden commuted their death sentences for life sentences, in the worst conditions possible.
+                                                    Directs the Attorney General to pressure the Supreme Court to overturn any precedents that limit federal or state authority to impose the death penalty.
+                                                    Directs the Attorney General to assist states in getting lethal injection drugs.
+                                                    Directs the Attorney General to prioritize prosecuting violent crime.
+                                                    During Trump's first term, he carried out 13 federal executions, more than any other president in modern history (only 3 others have been executed since 1976).
                                                     <sup>
-                                                        <a href="" target="_blank">[1]</a>
+                                                        <a href="https://en.wikisource.org/wiki/Executive_Order_14164" target="_blank">[1]</a>
+                                                        <a href="https://apnews.com/article/federal-executions-trump-d9b15ffc1db366a717f2f605330999e8" target="_blank">[2]</a>
                                                     </sup>
                                                 </td>
                                             </tr>
@@ -1422,12 +1465,12 @@
                                                     The Digital Service was originally created by Obama in 2014 to modernize government technology after the failed rollout of HealthCare.gov.
                                                     DOGE was to be orginally headed by Elon Musk and Vivek Ramaswamy, but Ramaswamy left DOGE after switching to running for governor in Ohio.
                                                     After Trump took office, at least 3 federal lawsuit were filed saying DOGE violated federal law by operating before Trump took office and not offering their records to the public.
-
+                                                    On 1/31/2025, David Lebryk, the top-ranking career U.S. Treasury Department official, announced he was leaving the treasury following a clash with DOGE over them wanting access to a sensitive system used to pay out more than $6 trillion a year in Social Security and Medicare benefits as well as federal salaries, government contract payments and tax refunds.  
                                                     <sup>
                                                         <a href="https://en.wikisource.org/wiki/Executive_Order_14158" target="_blank">[1]</a>
                                                         <a href="https://apnews.com/article/doge-government-trump-executive-order-1a2fb7235b9d6f178c764cf6c78d3317" target="_blank">[2]</a>
                                                         <a href="https://www.reuters.com/world/us/where-do-legal-cases-against-trumps-executive-orders-stand-2025-01-30/" target="_blank">[3]</a>
-                                                        <a href="" target="_blank">[4]</a>
+                                                        <a href="https://www.reuters.com/world/us/senior-us-treasury-official-david-lebryk-leave-agency-soon-wapo-reports-2025-01-31/" target="_blank">[4]</a>
                                                     </sup>
                                                 </td>
                                             </tr>
@@ -1444,11 +1487,13 @@
                                                     Orders the Assistant to the President for Legislative Affairs to draft legislation to codify the defenitions from this EO.
                                                     Rescinds Biden EOs 13988, 14004, 14020, 14021, and 14075 and dissolves the White House Gender Policy Council established by Biden EO 14020.
                                                     Trump later ordered federal agencies in a memo to scrub mentions of "gender ideology" in contracts, job descriptions and social media accounts in line with this EO and place on leave any employee "whose position description involves inculcating or promoting gender ideology."
-                                                    A trans women serving time in federal prison sued Trump soon after he signed the EO, saying it violated the constitution.
+                                                    On 1/26/25, a trans woman, known by the pseudonym Maria Moe, serving time in federal prison sued Trump soon after he signed the EO, saying it violated the constitution.
+                                                    On 1/30/25, a Boston district judge temporarily blocked federal prisons from transferring Maria Moe to a men's prison and denying her gender-affirming care, her laywers argued that Trump's EO went against the 5th amendment (discriminating based on sex) and the 8th amendment (cruel and unusual punishment).
                                                     <sup>
                                                         <a href="https://en.wikisource.org/wiki/Executive_Order_14168" target="_blank">[1]</a>
                                                         <a href="https://www.reuters.com/world/us/trump-orders-agencies-scrub-gender-ideology-contracts-websites-2025-01-30/" target="_blank">[2]</a>
                                                         <a href="https://www.reuters.com/world/us/where-do-legal-cases-against-trumps-executive-orders-stand-2025-01-30/" target="_blank">[3]</a>
+                                                        <a href="https://www.reuters.com/legal/us-judge-blocks-transgender-inmates-prison-transfer-under-trump-order-2025-01-30/" target="_blank">[4]</a>
                                                     </sup>
                                                 </td>
                                             </tr>
@@ -2075,17 +2120,41 @@
                             </div>
                             <div class="list-content-body">
                                 <ul>
+                                    <li>
+                                        <div id="washington-plane-crash-video"></div>
+                                    </li>
                                     <li><u>Crash</u>:
                                         <sup>
                                             <a href="https://www.reuters.com/world/us/takeoffs-landings-halted-ronald-reagan-national-airport-after-aircraft-incident-2025-01-30/" target="_blank">[1]</a>
                                         </sup>
                                         <ul>
                                             <li>In Jan 29, 2025, an American Airlines regional passenger jet collided with a US Army Black Hawk helicopter, crashing into the freezing Potomac River near Reagan Washington National Airport</li>
-                                            <li>64 people were aboard the passenger jet (60 passengers and 4 crew members) and 3 were on the US Army helicopter (on a training flight), with officials saying there were no survivors</li>
+                                            <li>64 people were aboard the passenger jet (60 passengers and 4 crew members) and 3 were on the US Army helicopter (on a training flight), with there being no survivors</li>
                                             <li>The event was the deadliest air disaster since 2001</li>
                                             <li>Passengers: included ice skaters, family and coaches returning from training camp in Wichita, Kansas, including Russian-born former world champions Yevgenia Shishkova and Vadim Naumov.</li>
                                             <li>Communications between the air traffic control tower and the Black Hawk showed the helicopter crew knew the plane was in the vicinity</li>
                                             <li>American Airlines flight 5342: operated by PSA Airlines, a regional subsidary of American Airlines, the plane was a CRJ-700 made by Canada's Bombardier, the pilot had ~6 years of flight experience</li>
+                                        </ul>
+                                    </li>
+                                    <li><u>Investigation</u>:
+                                        <sup>
+                                            <a href="https://www.reuters.com/world/us/trump-says-blackhawk-helicopter-dc-crash-was-flying-too-high-2025-01-31/" target="_blank">[1]</a>
+                                            <a href="https://www.reuters.com/world/us/trump-says-appointing-acting-faa-administrator-2025-01-30/" target="_blank">[2]</a>
+                                            <a href="https://www.reuters.com/world/us/pilots-recall-problems-washington-airport-after-fatal-crash-2025-01-30/" target="_blank">[3]</a>
+                                            <a href="https://www.reuters.com/world/us/trump-takes-aim-without-evidence-diversity-policies-over-midair-collision-2025-01-30/" target="_blank">[4]</a>
+                                            <a href="https://www.reuters.com/world/us/washington-dc-plane-crash-what-we-know-about-investigation-2025-01-30/" target="_blank">[5]</a>
+                                        </sup>
+                                        <ul>
+                                            <li>Since the 1980's, pilots have been rasing alarms over close calls (26 incidents in total) involving helicopters at Reagan airport.</li>
+                                            <li>Immediately after the crash, the U.S. National Transportation Safety Board (NTSB) opened an investigation into the cause of the collision.</li>
+                                            <li>The day after the crash, Trump seemingly blamed the Black Hawk crew by saying they were flying over their altitude limit. US military helicopters normally fly a route over the Potomac River, known as Route 4, where the altitude for helicoper flights is capped at 200 feet.</li>
+                                            <li>Both Hegseth and the Army said the three-member crew of soldiers on the Black Hawk were experienced, with the designated pilot having 1000 flying hours and the other pilot having 500.</li>
+                                            <li>Trump also suggested, with no evidence and while bodies were still being recovered, that DEI efforts in the FAA were the cause of the crash, then sent a memo to his admin to assess and undo any DEI initiatives in aviation safety roles.</li>
+                                            <li>Trump's comments at address on the crash: "The FAA diversity push includes focus on hiring people with severe intellectual and psychiatric disabilities. That is amazing," Trump said, claiming the FAA wanted people "with severe disabilities, the most underrepresented segment of the workforce, and they want them in and they want them - they can be air traffic controllers."</li>
+                                            <li>After being asked how he could blame the crash on DEI despite not knowing who was at fault, Trump replied "because I have common sense."</li>
+                                            <li>Trumps comments came despite there being a recording of an air traffic controller asking the Army helicopter to pass behind the regional jet.</li>
+                                            <li>Also on the day after the crash, Trump appointed a former senior aviation official, Chris Rocheleau, as the acting head of the FAA. The previous FAA administrator from Biden's term, Mike Whitaker, stepped down after Trump took office on Jan 20.</li>
+                                            <li>At the time of the crash, the FAA was 3000 controllers under their staffing targets at 10700 controllers.</li>
                                         </ul>
                                     </li>
                                 </ul>
