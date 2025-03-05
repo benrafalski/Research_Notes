@@ -559,6 +559,13 @@ hr.thick {
     display: inline;
 }
 
+.list-content-body {
+    border: #4d5a67;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 3px;
+}
 
 .sidenav-dropdown-container {
     margin-left: 15px;
