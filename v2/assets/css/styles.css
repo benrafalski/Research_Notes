@@ -19,6 +19,10 @@ th {
     background-color: #343a40; 
 }
 
+td {
+  background-color: #1f2326;
+}
+
 .memory-row {
   display: flex;
   margin-bottom: 20px;
