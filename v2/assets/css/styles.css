@@ -227,5 +227,13 @@ color: #cfe1fb;
     background-color: #052f43;
   }
 
+  mark.search-highlight {
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+
   /* STOP */
 

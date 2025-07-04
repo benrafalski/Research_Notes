@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trump Second Presidency Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    .collapse-arrow {
+      cursor: pointer;
+      user-select: none;
+    }
+    .collapse-arrow::before {
+      content: '▶ ';
+      transition: transform 0.2s;
+    }
+    .collapse-arrow[aria-expanded="true"]::before {
+      content: '▼ ';
+    }
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="p-4">
+
+  <h1>Trump Second Presidency Tracker</h1>
+
+  <!-- 🔍 Search Box -->
+  <div class="mb-3">
+    <input type="text" id="searchBox" class="form-control" placeholder="Search issues..." />
+  </div>
+
+  <!-- 🔽 Collapsible Issues List -->
+  <h2>Major Issues</h2>
+  <h3>Immigration</h3>
+  <ul class="list-unstyled">
+
+    <li>
+      <div class="collapse-arrow" data-bs-toggle="collapse" href="#asylumBan" role="button" aria-expanded="false" aria-controls="asylumBan">
+        <strong><u>Asylum Ban</u></strong>
+      </div>
+      <div class="collapse" id="asylumBan">
+        <p>
+          On January 20, 2025, benb signed a proclamation blocking all migrants
+          "engaged in the invasion across the southern border" from claiming asylum.
+        </p>
+        <p>
+          On July 2, U.S. District Judge Randolph Moss blocked the proclamation,
+          stating that neither federal immigration law nor the U.S. Constitution gave
+          Trump the authority to disregard existing asylum laws, even if stopping
+          illegal immigration presented "enormous challenges."
+          <sup><a href="https://www.reuters.com/legal/government/us-judge-blocks-trump-asylum-ban-us-mexico-border-says-he-exceeded-authority-2025-07-02/" target="_blank">[1]</a></sup>
+        </p>
+      </div>
+    </li>
+
+  </ul>
+
+  <script>
+    const searchInput = document.getElementById('searchBox');
+
+    function removeHighlights(el) {
+      const marks = el.querySelectorAll('mark.highlight');
+      marks.forEach(mark => {
+        const text = document.createTextNode(mark.textContent);
+        mark.parentNode.replaceChild(text, mark);
+        mark.remove();
+      });
+    }
+
+    function highlightText(el, query) {
+      const regex = new RegExp(`(${query})`, 'gi');
+      el.childNodes.forEach(node => {
+        if (node.nodeType === 3 && node.textContent.toLowerCase().includes(query.toLowerCase())) {
+          const span = document.createElement('span');
+          span.innerHTML = node.textContent.replace(regex, '<mark class="highlight">$1</mark>');
+          el.replaceChild(span, node);
+        }
+      });
+    }
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim().toLowerCase();
+      const collapses = document.querySelectorAll('.collapse');
+      let foundAny = false;
+
+      collapses.forEach(collapse => {
+        removeHighlights(collapse);
+
+        const text = collapse.innerText.toLowerCase();
+        const parentToggle = document.querySelector(`[href="#${collapse.id}"]`);
+        const bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapse);
+
+        if (query && text.includes(query)) {
+          // Expand and highlight
+          bsCollapse.show();
+          foundAny = true;
+          collapse.querySelectorAll('p').forEach(p => highlightText(p, query));
+          parentToggle.setAttribute('aria-expanded', 'true');
+        } else {
+          // Collapse and reset
+          bsCollapse.hide();
+          parentToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -125,6 +125,10 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="d-lg-none mobile-sidebar-scroll">
                 ${tocHTML}
               </div>
+
+              <form class="d-flex ms-auto me-2" role="search">
+                <input class="form-control form-control-sm text-bg-dark border-light" type="search" placeholder="Search" aria-label="Search" id="customSearchBox" style="width: 200px;">
+              </form>
             </div>
           </div>
         </nav>
@@ -184,6 +188,59 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll('a.internal-link[href^="#"]').forEach(link => {
         const hash = link.getAttribute('href');
         link.setAttribute('href', window.location.pathname + hash);
+      });
+
+      const searchInput = document.getElementById('customSearchBox');
+
+      function removeHighlights(el) {
+        const highlights = el.querySelectorAll('mark.search-highlight');
+        highlights.forEach(mark => {
+          const text = document.createTextNode(mark.textContent);
+          mark.parentNode.replaceChild(text, mark);
+        });
+      }
+
+      function highlightAndExpandMatches(query) {
+        const collapses = document.querySelectorAll('.collapse');
+        const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'); // escape regex
+
+        collapses.forEach(collapse => {
+          removeHighlights(collapse);
+          const text = collapse.innerText.toLowerCase();
+          const bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapse);
+          const parentToggle = document.querySelector(`[href="#${collapse.id}"]`);
+
+          if (query && text.includes(query)) {
+            bsCollapse.show();
+            parentToggle?.setAttribute('aria-expanded', 'true');
+            collapse.querySelectorAll('p, li').forEach(el => {
+              // Skip elements with no text match
+              if (!el.textContent.toLowerCase().includes(query)) return;
+
+              // Use a placeholder approach to not break tags
+              const originalHTML = el.innerHTML;
+
+              const highlightedHTML = originalHTML.replace(
+                regex,
+                '<mark class="search-highlight">$1</mark>'
+              );
+
+              el.innerHTML = highlightedHTML;
+              console.log(`${highlightedHTML}`)
+            });
+
+          } else {
+            bsCollapse.hide();
+            parentToggle?.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        // console.log(`query = ${query}`)
+        highlightAndExpandMatches(query);
       });
 
       
