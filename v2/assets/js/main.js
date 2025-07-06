@@ -191,6 +191,13 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const searchInput = document.getElementById('customSearchBox');
+      // const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.addEventListener('input', debounce(() => {
+          const query = searchInput.value.trim().toLowerCase();
+          highlightAndExpandMatches(query);
+        }, 300)); // ← 300ms delay, adjust if needed
+      }
 
       function removeHighlights(el) {
         const highlights = el.querySelectorAll('mark.search-highlight');
@@ -201,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       function highlightAndExpandMatches(query) {
-        const collapses = document.querySelectorAll('.collapse');
+        const collapses = document.querySelectorAll('.content .collapse');
         const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'); // escape regex
 
         collapses.forEach(collapse => {
@@ -214,20 +221,16 @@ document.addEventListener("DOMContentLoaded", () => {
             bsCollapse.show();
             parentToggle?.setAttribute('aria-expanded', 'true');
             collapse.querySelectorAll('p, li').forEach(el => {
-              // Skip elements with no text match
-              if (!el.textContent.toLowerCase().includes(query)) return;
+            const span = el.querySelector('span');
+            if (!span || !span.textContent.toLowerCase().includes(query)) return;
 
-              // Use a placeholder approach to not break tags
-              const originalHTML = el.innerHTML;
-
-              const highlightedHTML = originalHTML.replace(
-                regex,
-                '<mark class="search-highlight">$1</mark>'
-              );
-
-              el.innerHTML = highlightedHTML;
-              console.log(`${highlightedHTML}`)
-            });
+            const originalHTML = span.innerHTML;
+            const highlightedHTML = originalHTML.replace(
+              regex,
+              '<mark class="search-highlight">$1</mark>'
+            );
+            span.innerHTML = highlightedHTML;
+          });
 
           } else {
             bsCollapse.hide();
@@ -243,5 +246,93 @@ document.addEventListener("DOMContentLoaded", () => {
         highlightAndExpandMatches(query);
       });
 
+
+        let idCounter = 0;
+
+  document.querySelectorAll("ul").forEach(ul => {
+    if (ul.classList.contains("list-unstyled")) return; // Skip already transformed
+    ul.classList.add("list-unstyled");
+
+    ul.querySelectorAll(":scope > li").forEach(li => {
+      const uTag = li.querySelector("u");
+      if (!uTag) return;
+
+      // 1. Extract title and create safe ID
+      const titleText = uTag.textContent.trim();
+      const baseId = titleText.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '');
+      const uniqueId = `${baseId}-${idCounter++}`;
+
+      // 2. Create collapse toggle
+      const strongTitle = document.createElement("strong");
+      const underline = document.createElement("u");
+      underline.textContent = titleText;
+      strongTitle.appendChild(underline);
+
+      const collapseArrow = document.createElement("div");
+      collapseArrow.className = "collapse-arrow";
+      collapseArrow.setAttribute("data-bs-toggle", "collapse");
+      collapseArrow.setAttribute("href", `#${uniqueId}`);
+      collapseArrow.setAttribute("role", "button");
+      collapseArrow.setAttribute("aria-expanded", "false");
+      collapseArrow.setAttribute("aria-controls", uniqueId);
+      collapseArrow.appendChild(strongTitle);
+
+      // 3. Remove original <u> from <li>
+      uTag.remove();
+
+      // 4. Create collapse content container
+      const collapseDiv = document.createElement("div");
+      collapseDiv.className = "collapse";
+      collapseDiv.id = uniqueId;
+
+      // 5. Handle content splitting on <sup>
+      const newParagraphs = [];
+
+      const nodes = Array.from(li.childNodes); // include text, sup, and elements
+      let currentSpan = document.createElement("span");
+      let currentP = document.createElement("p");
+      currentP.appendChild(currentSpan);
+
+      nodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          currentSpan.appendChild(document.createTextNode(node.textContent));
+        } else if (node.tagName === "SUP") {
+          currentP.appendChild(node.cloneNode(true));
+          newParagraphs.push(currentP);
+
+          // Reset for next group
+          currentSpan = document.createElement("span");
+          currentP = document.createElement("p");
+          currentP.appendChild(currentSpan);
+        } else if (node.tagName === "UL") {
+          // Nested list: add as-is outside of the wrapping <p>
+          newParagraphs.push(node.cloneNode(true));
+        } else {
+          currentSpan.appendChild(node.cloneNode(true)); // catch <a> or others
+        }
+      });
+
+      // Add any remaining span if it had text
+      if (currentSpan.textContent.trim() !== '') {
+        newParagraphs.push(currentP);
+      }
+
+      // Append all new paragraphs into collapse div
+      newParagraphs.forEach(p => collapseDiv.appendChild(p));
+
+      // 6. Replace original <li> content with new structure
+      li.innerHTML = "";
+      li.appendChild(collapseArrow);
+      li.appendChild(collapseDiv);
+    });
+  });
       
+
+  function debounce(fn, delay) {
+  let timeoutId;
+  return function(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn.apply(this, args), delay);
+  };
+} 
 });
