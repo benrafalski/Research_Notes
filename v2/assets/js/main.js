@@ -119,6 +119,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     <li><a class="dropdown-item text-light" href="content/world/north-america/united-states/culture/music/us-music.html">Music</a></li>
                   </ul>
                 </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id="foundingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Founding
+                  </a>
+                  <ul class="dropdown-menu bg-dark text-light" aria-labelledby="foundingDropdown">
+                    <li><a class="dropdown-item text-light" href="content/world/north-america/united-states/founding/colonization.html">Colonization</a></li>
+                    <li><a class="dropdown-item text-light" href="content/world/north-america/united-states/founding/revolution.html">Revolution</a></li>
+                  </ul>
+                </li>
 
               </ul>
 
